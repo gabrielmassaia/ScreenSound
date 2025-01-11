@@ -5,8 +5,15 @@ using ScreenSound.Modelos;
 
 try
 {
-    var connection = new Connection();
-    var listaArtistas = connection.Listar();
+    var artistaDAL = new ArtistaDAL();
+    //artistaDAL.Adicionar(new Artista("RHCP", "RHCP é uma banda de rock da california"));
+
+    var artistaGB = new Artista("Queen", "Banda de rock anos 70") { Id = 1003 };
+
+    artistaDAL.Atualizar(artistaGB);
+    artistaDAL.Deletar(artistaGB);
+
+    var listaArtistas = artistaDAL.Listar();
 
     foreach (var artista in listaArtistas)
     {
